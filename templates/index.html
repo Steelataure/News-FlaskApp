@@ -46,4 +46,31 @@
         {% endfor %}
     </div>
 </div>
+
+<!-- Le reste du contenu de la page -->
+
+<div class="pagination">
+    {% if articles|length > ARTICLES_PAR_PAGE %}
+        {% if page > 1 %}
+            <a href="?page={{ page - 1 }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}">Précédent</a>
+        {% endif %}
+
+        {% for page_num in range(1, (articles|length // ARTICLES_PAR_PAGE) + 1) %}
+            {% if page_num == page %}
+                <span class="current">{{ page_num }}</span>
+            {% else %}
+                <a href="?page={{ page_num }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}">{{ page_num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page < articles|length // ARTICLES_PAR_PAGE %}
+            <a href="?page={{ page + 1 }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}">Suivant</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+<!-- Le reste du contenu de la page -->
+
+
 {% endblock %}
+
