@@ -3,22 +3,27 @@
 <head>
     <title>Mon Application d'Actualités</title>
     <!-- Lien vers les styles Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <!-- Lien vers ton fichier de style CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
     <!-- Ici, tu peux inclure d'autres fichiers CSS si nécessaire -->
 </head>
-<body>
+<body id="top">
     <!-- Contenu spécifique à chaque page sera inclus ici -->
     {% block content %}
     {% endblock %}
 
-    <!-- Lien vers le script Bootstrap (jQuery inclus) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+		<!-- Scripts -->
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/jquery.scrolly.min.js"></script>
+        <script src="static/js/jquery.poptrox.min.js"></script>
+        <script src="static/js/skel.min.js"></script>
+        <script src="static/js/util.js"></script>
+        <script src="static/js/main.js"></script>
+        
     <!-- Ici, tu peux inclure d'autres fichiers JavaScript si nécessaire -->
 </body>
 </html>

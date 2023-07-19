@@ -1,53 +1,82 @@
 {% extends "base.html" %}
 
 {% block content %}
-<header class="jumbotron mb-4">
-    <div class="container">
-        <h1 class="display-4">Application d'Actualités</h1>
-        <p class="lead">Les dernières actualités du jour</p>
-    </div>
-</header>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2 search-form">
-            <!-- Formulaire de recherche -->
-            <form class="form-inline" method="get">
-                <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" class="form-control" name="q" placeholder="Rechercher...">
-                </div>
-                <div class="form-group mb-2">
-                    <select class="form-control" name="category">
-                        <option value="">Toutes les actualités</option>
-                        <option value="technology">Technologie</option>
-                        <option value="sports">Sports</option>
-                        <option value="health">Santé</option>
-                        <option value="popular">Populaire</option>
-                        <!-- Ajoute d'autres options pour les types d'actualités souhaités -->
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary mb-2 search-btn">Rechercher</button>
-            </form>
-        </div>
+<section id="banner" data-video="images/banner">
+    <div class="inner">
+        <header>
+            <h1>Application d'Actualités</h1>
+            <p>Les dernières actualités du jour<br />
+        </header>
+        <a href="#main" class="more">Learn More</a>
     </div>
+</section>
 
-    <div class="row">
-        {% for article in articles %}
-        <div class="col-md-6">
-            <div class="card mb-4">
-                <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ article.title }}</h5>
-                    <p class="card-text">{{ article.description }}</p>
-                    <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Lire plus</a>
+<!-- Main -->
+<div id="main">
+    <div class="search-form">
+        <form class="form-inline" method="get">
+            <div class="form-group">
+                <input type="text" class="form-control" name="q" placeholder="Rechercher...">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="category">
+                    <option value="">Toutes les actualités</option>
+                    <option value="world">Monde</option>
+                    <option value="nation">Nation</option>
+                    <option value="business">Affaires</option>
+                    <option value="technology">Technologie</option>
+                    <option value="entertainment">Divertissement</option>
+                    <option value="sports">Sports</option>
+                    <option value="science">Science</option>
+                    <option value="health">Santé</option>
+                </select>
+            </div>
+            <button type="submit" class="search-btn">Rechercher</button>
+        </form>
+    </div>
+    <br>
+
+
+    <div class="inner">
+    <!-- Boxes -->
+        <div class="thumbnails">
+
+            {% for article in articles %}
+            <div class="box">
+                <a href="{{ article.url }}" class="image fit"><img src="{{ article.image }}" alt="{{ article.title }}" /></a>
+                <div class="inner">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.description }}</p>
+                    <a href="{{ article.url }}" target="_blank" class="button fit">Lire plus</a>
                 </div>
             </div>
+            {% endfor %}
+
         </div>
-        {% endfor %}
+
     </div>
 </div>
 
-<!-- Le reste du contenu de la page -->
+    
+  <!--  <div class="container">
+        <div class="row">
+            {% for article in articles %}
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="{{ article.image }}" class="card-img-top" alt="{{ article.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text card-description">{{ article.description }} 
+                        <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Lire plus</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>-->
+
+<!-- Le reste du contenu de la page
 
 <div class="pagination">
     {% if articles|length > ARTICLES_PAR_PAGE %}
@@ -68,9 +97,18 @@
         {% endif %}
     {% endif %}
 </div>
+Le reste du contenu de la page -->
 
-<!-- Le reste du contenu de la page -->
+<footer id="footer">
+    <div class="inner">
+        <h2></h2>
+        <p></p>
 
-
+        <ul class="icons">
+            <li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+            <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+    </div>
+</footer>
 {% endblock %}
 
